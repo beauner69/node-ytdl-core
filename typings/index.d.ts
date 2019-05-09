@@ -1,6 +1,6 @@
 declare module "@zerolabs/ytdl-core" {
-  import { ClientRequest } from "http";
-  import { Readable } from "stream";
+  // import { ClientRequest } from "http";
+  // import { Readable } from "stream";
 
   namespace ytdl {
     type downloadOptions = {
@@ -289,10 +289,10 @@ declare module "@zerolabs/ytdl-core" {
       options?: downloadOptions,
       callback?: (err: Error, info: videoInfo) => void
     ): Promise<videoInfo>;
-    function downloadFromInfo(
-      info: videoInfo,
-      options?: downloadOptions
-    ): Readable;
+    // function downloadFromInfo(
+    //   info: videoInfo,
+    //   options?: downloadOptions
+    // ): Readable;
     function chooseFormat(
       format: videoFormat | videoFormat[],
       options?: downloadOptions
@@ -321,7 +321,7 @@ declare module "@zerolabs/ytdl-core" {
     ): void;
   }
 
-  function ytdl(link: string, options?: ytdl.downloadOptions): Readable;
+  // function ytdl(link: string, options?: ytdl.downloadOptions): Readable;
 
   export = ytdl;
 }
