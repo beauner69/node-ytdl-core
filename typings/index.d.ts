@@ -1,11 +1,24 @@
-declare module 'ytdl-core' {
-  import { ClientRequest } from 'http';
-  import { Readable } from 'stream';
+declare module "@zerolabs/ytdl-core" {
+  import { ClientRequest } from "http";
+  import { Readable } from "stream";
 
   namespace ytdl {
     type downloadOptions = {
-      quality?: 'lowest' | 'highest' | 'highestaudio' | 'lowestaudio' | 'highestvideo' | 'lowestvideo' | string | number;
-      filter?: 'video' | 'videoonly' | 'audio' | 'audioonly' | ((format: videoFormat) => boolean);
+      quality?:
+        | "lowest"
+        | "highest"
+        | "highestaudio"
+        | "lowestaudio"
+        | "highestvideo"
+        | "lowestvideo"
+        | string
+        | number;
+      filter?:
+        | "video"
+        | "videoonly"
+        | "audio"
+        | "audioonly"
+        | ((format: videoFormat) => boolean);
       format?: videoFormat;
       range?: {
         start?: number;
@@ -16,7 +29,7 @@ declare module 'ytdl-core' {
       requestOptions?: {};
       highWaterMark?: number;
       lang?: string;
-    }
+    };
 
     type videoFormat = {
       s?: string;
@@ -30,21 +43,41 @@ declare module 'ytdl-core' {
       fps?: string;
       index?: string;
       type?: string;
-      quality?: 'hd720' | 'medium' | 'small' | string;
-      quality_label?: '144p' | '240p' | '270p' | '360p' | '480p' | '720p' | '1080p' | '1440p' | '2160p' | '4320p';
+      quality?: "hd720" | "medium" | "small" | string;
+      quality_label?:
+        | "144p"
+        | "240p"
+        | "270p"
+        | "360p"
+        | "480p"
+        | "720p"
+        | "1080p"
+        | "1440p"
+        | "2160p"
+        | "4320p";
       url: string;
       itag: string;
-      container: 'flv' | '3gp' | 'mp4' | 'webm' | 'ts';
-      resolution: '144p' | '240p' | '270p' | '360p' | '480p' | '720p' | '1080p' | '1440p' | '2160p' | '4320p';
-      encoding: 'Sorenson H.283' | 'MPEG-4 Visual' | 'VP8' | 'VP9' | 'H.264';
-      profile: '3d' | 'high' | 'main' | 'simple' | 'baseline' | 'Main@L3.1';
+      container: "flv" | "3gp" | "mp4" | "webm" | "ts" | "m4a";
+      resolution:
+        | "144p"
+        | "240p"
+        | "270p"
+        | "360p"
+        | "480p"
+        | "720p"
+        | "1080p"
+        | "1440p"
+        | "2160p"
+        | "4320p";
+      encoding: "Sorenson H.283" | "MPEG-4 Visual" | "VP8" | "VP9" | "H.264";
+      profile: "3d" | "high" | "main" | "simple" | "baseline" | "Main@L3.1";
       bitrate: string;
-      audioEncoding: 'mp3' | 'vorbis' | 'aac' | 'opus' | 'flac';
+      audioEncoding: "mp3" | "vorbis" | "aac" | "opus" | "flac";
       audioBitrate: number;
       live: boolean;
       isHLS: boolean;
       isDashMPD: boolean;
-    }
+    };
 
     type videoInfo = {
       iv_load_policy?: string;
@@ -95,7 +128,7 @@ declare module 'ytdl-core' {
         artist_url?: string;
         writers?: string;
         licensed_by?: string;
-      },
+      };
       author: {
         id: string;
         name: string;
@@ -209,15 +242,15 @@ declare module 'ytdl-core' {
             thumbnails: {
               url: string;
               width: number;
-              height: number
+              height: number;
             }[];
           };
           viewCount: number;
           author: string;
           isLiveContent: boolean;
-        }
+        };
       };
-    }
+    };
 
     type relatedVideo = {
       id?: string;
@@ -236,19 +269,56 @@ declare module 'ytdl-core' {
       video_id?: string;
       list?: string;
       thumbnail_ids?: string;
-    }
+    };
 
-    function getBasicInfo(url: string, callback?: (err: Error, info: videoInfo) => void): Promise<videoInfo>;
-    function getBasicInfo(url: string, options?: downloadOptions, callback?: (err: Error, info: videoInfo) => void): Promise<videoInfo>;
-    function getInfo(url: string, callback?: (err: Error, info: videoInfo) => void): Promise<videoInfo>;
-    function getInfo(url: string, options?: downloadOptions, callback?: (err: Error, info: videoInfo) => void): Promise<videoInfo>;
-    function downloadFromInfo(info: videoInfo, options?: downloadOptions): Readable;
-    function chooseFormat(format: videoFormat | videoFormat[], options?: downloadOptions): videoFormat | Error;
-    function filterFormats(formats: videoFormat | videoFormat[], filter?: 'video' | 'videoonly' | 'audio' | 'audioonly' | ((format: videoFormat) => boolean)): videoFormat[];
+    function getBasicInfo(
+      url: string,
+      callback?: (err: Error, info: videoInfo) => void
+    ): Promise<videoInfo>;
+    function getBasicInfo(
+      url: string,
+      options?: downloadOptions,
+      callback?: (err: Error, info: videoInfo) => void
+    ): Promise<videoInfo>;
+    function getInfo(
+      url: string,
+      callback?: (err: Error, info: videoInfo) => void
+    ): Promise<videoInfo>;
+    function getInfo(
+      url: string,
+      options?: downloadOptions,
+      callback?: (err: Error, info: videoInfo) => void
+    ): Promise<videoInfo>;
+    function downloadFromInfo(
+      info: videoInfo,
+      options?: downloadOptions
+    ): Readable;
+    function chooseFormat(
+      format: videoFormat | videoFormat[],
+      options?: downloadOptions
+    ): videoFormat | Error;
+    function filterFormats(
+      formats: videoFormat | videoFormat[],
+      filter?:
+        | "video"
+        | "videoonly"
+        | "audio"
+        | "audioonly"
+        | ((format: videoFormat) => boolean)
+    ): videoFormat[];
     function validateID(string: string): boolean;
     function validateURL(string: string): boolean;
     function getURLVideoID(string: string): string | Error;
     function getVideoID(string: string): string | Error;
+
+    // Zerolabs Additions:
+    function InstallMiniGet(
+      miniget: (
+        url: string,
+        opts: any,
+        callback: (a: number, b: number, text: string) => void
+      ) => void
+    ): void;
   }
 
   function ytdl(link: string, options?: ytdl.downloadOptions): Readable;

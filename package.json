@@ -1,16 +1,12 @@
 {
-  "name": "ytdl-core",
+  "name": "@zerolabs/ytdl-core",
   "description": "Youtube video downloader in pure javascript.",
   "keywords": [
     "youtube",
     "video",
     "download"
   ],
-  "version": "0.29.1",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/fent/node-ytdl-core.git"
-  },
+  "version": "0.0.1",
   "author": "fent (https://github.com/fent)",
   "contributors": [
     "Tobias Kutscha (https://github.com/TimeForANinja)",
@@ -35,7 +31,7 @@
     "sax": "^1.1.3"
   },
   "devDependencies": {
-    "@types/node": "^10.0.3",
+    "@types/node": "latest",
     "assert-diff": "^2.0.0",
     "istanbul": "^0.4.5",
     "mocha": "^5.0.0",
@@ -47,5 +43,9 @@
   "engines": {
     "node": ">=6"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/beauner69/node-ytdl-core/tree/master/"
+  }
 }
