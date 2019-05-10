@@ -284,6 +284,7 @@ declare module "@zerolabs/ytdl-core" {
       url: string,
       callback?: (err: Error, info: videoInfo) => void
     ): Promise<videoInfo>;
+    function getInfoFromYTID(ytid: string): Promise<videoInfo>;
     function getInfo(
       url: string,
       options?: downloadOptions,
