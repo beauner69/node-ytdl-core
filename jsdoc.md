@@ -7,39 +7,38 @@
     -   [InstallMiniGet][3]
 -   [getBasicInfo][4]
 -   [getFullInfo][5]
--   [cache][6]
--   [cache][7]
--   [cache][8]
--   [cache][9]
+-   [validateID][6]
+-   [validateID][7]
+-   [validateID][8]
+-   [validateID][9]
 -   [gotConfig][10]
--   [fn][11]
--   [sortFormats][12]
--   [chooseFormat][13]
--   [filterFormats][14]
--   [between][15]
--   [getVideoID][16]
--   [validateURL][17]
--   [parseFormats][18]
--   [addFormatMeta][19]
--   [stripHTML][20]
--   [parallel][21]
--   [indexOf][22]
--   [validQueryDomains][23]
--   [idRegex][24]
--   [formats][25]
--   [getTokens][26]
--   [decipher][27]
--   [extractActions][28]
--   [setDownloadURL][29]
--   [decipherFormats][30]
--   [swapHeadAndPosition][31]
+-   [sortFormats][11]
+-   [chooseFormat][12]
+-   [filterFormats][13]
+-   [between][14]
+-   [getVideoID][15]
+-   [validateURL][16]
+-   [parseFormats][17]
+-   [addFormatMeta][18]
+-   [stripHTML][19]
+-   [parallel][20]
+-   [indexOf][21]
+-   [validQueryDomains][22]
+-   [idRegex][23]
+-   [formats][24]
+-   [getTokens][25]
+-   [decipher][26]
+-   [extractActions][27]
+-   [setDownloadURL][28]
+-   [decipherFormats][29]
+-   [swapHeadAndPosition][30]
 
 ## ytdl
 
 **Parameters**
 
--   `link` **[string][32]** 
--   `options` **![Object][33]** 
+-   `link` **[string][31]** 
+-   `options` **![Object][32]** 
 
 Returns **ReadableStream** 
 
@@ -50,9 +49,9 @@ Chooses a format to download.
 **Parameters**
 
 -   `miniget`  
--   `stream` **[stream.Readable][34]** 
--   `info` **[Object][33]** 
--   `options` **[Object][33]** 
+-   `stream` **[stream.Readable][33]** 
+-   `info` **[Object][32]** 
+-   `options` **[Object][32]** 
 
 ### InstallMiniGet
 
@@ -63,8 +62,8 @@ Can be used to download video after its `info` is gotten through
 **Parameters**
 
 -   `miniget`  
--   `info` **[Object][33]** 
--   `options` **![Object][33]** 
+-   `info` **[Object][32]** 
+-   `options` **![Object][32]** 
 
 ## getBasicInfo
 
@@ -72,8 +71,8 @@ Gets info from a video without getting additional formats.
 
 **Parameters**
 
--   `id` **[string][32]** 
--   `options` **[Object][33]** 
+-   `id` **[string][31]** 
+-   `options` **[Object][32]** 
 -   `callback`  
 
 ## getFullInfo
@@ -82,61 +81,54 @@ Gets info from a video additional formats and deciphered URLs.
 
 **Parameters**
 
--   `id` **[string][32]** 
--   `options` **[Object][33]** 
+-   `id` **[string][31]** 
+-   `options` **[Object][32]** 
 -   `callback`  
 
-## cache
+## validateID
 
 **Parameters**
 
--   `url` **[string][32]** 
--   `tokens` **[Array][35]&lt;[string][32]>** 
+-   `url` **[string][31]** 
+-   `tokens` **[Array][34]&lt;[string][31]>** 
 
-## cache
+## validateID
 
 Merges formats from DASH or M3U8 with formats from video info page.
 
 **Parameters**
 
--   `info` **[Object][33]** 
--   `formatsMap` **[Object][33]** 
+-   `info` **[Object][32]** 
+-   `formatsMap` **[Object][32]** 
 
-## cache
+## validateID
 
 Gets additional DASH formats.
 
 **Parameters**
 
--   `url` **[string][32]** 
--   `options` **[Object][33]** 
+-   `url` **[string][31]** 
+-   `options` **[Object][32]** 
 
-## cache
+## validateID
 
 Gets additional formats.
 
 **Parameters**
 
--   `url` **[string][32]** 
--   `options` **[Object][33]** 
+-   `url` **[string][31]** 
+-   `options` **[Object][32]** 
 
 ## gotConfig
 
 **Parameters**
 
--   `id` **[Object][33]** 
--   `options` **[Object][33]** 
--   `additional` **[Object][33]** 
--   `config` **[Object][33]** 
--   `fromEmbed` **[boolean][36]** 
+-   `id` **[Object][32]** 
+-   `options` **[Object][32]** 
+-   `additional` **[Object][32]** 
+-   `config` **[Object][32]** 
+-   `fromEmbed` **[boolean][35]** 
 -   `callback`  
-
-## fn
-
-**Parameters**
-
--   `link` **[string][32]** 
--   `options` **[Object][33]** 
 
 ## sortFormats
 
@@ -145,8 +137,8 @@ By resolution, then video bitrate, then audio bitrate.
 
 **Parameters**
 
--   `a` **[Object][33]** 
--   `b` **[Object][33]** 
+-   `a` **[Object][32]** 
+-   `b` **[Object][32]** 
 
 ## chooseFormat
 
@@ -154,19 +146,19 @@ Choose a format depending on the given options.
 
 **Parameters**
 
--   `formats` **[Array][35]&lt;[Object][33]>** 
--   `options` **[Object][33]** 
+-   `formats` **[Array][34]&lt;[Object][32]>** 
+-   `options` **[Object][32]** 
 
-Returns **([Object][33] \| [Error][37])** 
+Returns **([Object][32] \| [Error][36])** 
 
 ## filterFormats
 
 **Parameters**
 
--   `formats` **[Array][35]&lt;[Object][33]>** 
--   `filter` **[Function][38]** 
+-   `formats` **[Array][34]&lt;[Object][32]>** 
+-   `filter` **[Function][37]** 
 
-Returns **[Array][35]&lt;[Object][33]>** 
+Returns **[Array][34]&lt;[Object][32]>** 
 
 ## between
 
@@ -174,11 +166,11 @@ Extract string inbetween another.
 
 **Parameters**
 
--   `haystack` **[string][32]** 
--   `left` **[string][32]** 
--   `right` **[string][32]** 
+-   `haystack` **[string][31]** 
+-   `left` **[string][31]** 
+-   `right` **[string][31]** 
 
-Returns **[string][32]** 
+Returns **[string][31]** 
 
 ## getVideoID
 
@@ -187,9 +179,9 @@ matches the video ID format.
 
 **Parameters**
 
--   `str` **[string][32]** 
+-   `str` **[string][31]** 
 
-Returns **([string][32] \| [Error][37])** 
+Returns **([string][31] \| [Error][36])** 
 
 ## validateURL
 
@@ -197,23 +189,23 @@ Checks wether the input string includes a valid id.
 
 **Parameters**
 
--   `string` **[string][32]** 
+-   `string` **[string][31]** 
 
-Returns **[boolean][36]** 
+Returns **[boolean][35]** 
 
 ## parseFormats
 
 **Parameters**
 
--   `info` **[Object][33]** 
+-   `info` **[Object][32]** 
 
-Returns **[Array][35]&lt;[Object][33]>** 
+Returns **[Array][34]&lt;[Object][32]>** 
 
 ## addFormatMeta
 
 **Parameters**
 
--   `format` **[Object][33]** 
+-   `format` **[Object][32]** 
 
 ## stripHTML
 
@@ -221,15 +213,15 @@ Get only the string from an HTML string.
 
 **Parameters**
 
--   `html` **[string][32]** 
+-   `html` **[string][31]** 
 
-Returns **[string][32]** 
+Returns **[string][31]** 
 
 ## parallel
 
 **Parameters**
 
--   `funcs` **[Array][35]&lt;[Function][38]>** 
+-   `funcs` **[Array][34]&lt;[Function][37]>** 
 -   `callback`  
 
 ## indexOf
@@ -238,10 +230,10 @@ String#indexOf() that supports regex too.
 
 **Parameters**
 
--   `haystack` **[string][32]** 
--   `needle` **([string][32] \| [RegExp][39])** 
+-   `haystack` **[string][31]** 
+-   `needle` **([string][31] \| [RegExp][38])** 
 
-Returns **[number][40]** 
+Returns **[number][39]** 
 
 ## validQueryDomains
 
@@ -249,19 +241,19 @@ Get video ID.
 
 There are a few type of video URL formats.
 
--   [https://www.youtube.com/watch?v=VIDEO_ID][41]
--   [https://m.youtube.com/watch?v=VIDEO_ID][42]
--   [https://youtu.be/VIDEO_ID][43]
--   [https://www.youtube.com/v/VIDEO_ID][44]
--   [https://www.youtube.com/embed/VIDEO_ID][45]
--   [https://music.youtube.com/watch?v=VIDEO_ID][46]
--   [https://gaming.youtube.com/watch?v=VIDEO_ID][47]
+-   [https://www.youtube.com/watch?v=VIDEO_ID][40]
+-   [https://m.youtube.com/watch?v=VIDEO_ID][41]
+-   [https://youtu.be/VIDEO_ID][42]
+-   [https://www.youtube.com/v/VIDEO_ID][43]
+-   [https://www.youtube.com/embed/VIDEO_ID][44]
+-   [https://music.youtube.com/watch?v=VIDEO_ID][45]
+-   [https://gaming.youtube.com/watch?v=VIDEO_ID][46]
 
 **Parameters**
 
--   `link` **[string][32]** 
+-   `link` **[string][31]** 
 
-Returns **([string][32] \| [Error][37])** 
+Returns **([string][31] \| [Error][36])** 
 
 ## idRegex
 
@@ -269,13 +261,13 @@ Returns true if given id satifies YouTube's id format.
 
 **Parameters**
 
--   `id` **[string][32]** 
+-   `id` **[string][31]** 
 
-Returns **[boolean][36]** 
+Returns **[boolean][35]** 
 
 ## formats
 
-[http://en.wikipedia.org/wiki/YouTube#Quality_and_formats][48]
+[http://en.wikipedia.org/wiki/YouTube#Quality_and_formats][47]
 
 ## getTokens
 
@@ -283,8 +275,8 @@ Extract signature deciphering tokens from html5player file.
 
 **Parameters**
 
--   `html5playerfile` **[string][32]** 
--   `options` **[Object][33]** 
+-   `html5playerfile` **[string][31]** 
+-   `options` **[Object][32]** 
 -   `callback`  
 
 ## decipher
@@ -293,10 +285,10 @@ Decipher a signature based on action tokens.
 
 **Parameters**
 
--   `tokens` **[Array][35]&lt;[string][32]>** 
--   `sig` **[string][32]** 
+-   `tokens` **[Array][34]&lt;[string][31]>** 
+-   `sig` **[string][31]** 
 
-Returns **[string][32]** 
+Returns **[string][31]** 
 
 ## extractActions
 
@@ -318,17 +310,17 @@ it takes on a signature.
 
 **Parameters**
 
--   `body` **[string][32]** 
+-   `body` **[string][31]** 
 
-Returns **[Array][35]&lt;[string][32]>** 
+Returns **[Array][34]&lt;[string][31]>** 
 
 ## setDownloadURL
 
 **Parameters**
 
--   `format` **[Object][33]** 
--   `sig` **[string][32]** 
--   `debug` **[boolean][36]** 
+-   `format` **[Object][32]** 
+-   `sig` **[string][31]** 
+-   `debug` **[boolean][35]** 
 
 ## decipherFormats
 
@@ -336,9 +328,9 @@ Applies `sig.decipher()` to all format URL's.
 
 **Parameters**
 
--   `formats` **[Array][35]&lt;[Object][33]>** 
--   `tokens` **[Array][35]&lt;[string][32]>** 
--   `debug` **[boolean][36]** 
+-   `formats` **[Array][34]&lt;[Object][32]>** 
+-   `tokens` **[Array][34]&lt;[string][31]>** 
+-   `debug` **[boolean][35]** 
 
 ## swapHeadAndPosition
 
@@ -346,10 +338,10 @@ Swaps the first element of an array with one of given position.
 
 **Parameters**
 
--   `arr` **[Array][35]&lt;[Object][33]>** 
--   `position` **[number][40]** 
+-   `arr` **[Array][34]&lt;[Object][32]>** 
+-   `position` **[number][39]** 
 
-Returns **[Array][35]&lt;[Object][33]>** 
+Returns **[Array][34]&lt;[Object][32]>** 
 
 [1]: #ytdl
 
@@ -361,88 +353,86 @@ Returns **[Array][35]&lt;[Object][33]>**
 
 [5]: #getfullinfo
 
-[6]: #cache
+[6]: #validateid
 
-[7]: #cache-1
+[7]: #validateid-1
 
-[8]: #cache-2
+[8]: #validateid-2
 
-[9]: #cache-3
+[9]: #validateid-3
 
 [10]: #gotconfig
 
-[11]: #fn
+[11]: #sortformats
 
-[12]: #sortformats
+[12]: #chooseformat
 
-[13]: #chooseformat
+[13]: #filterformats
 
-[14]: #filterformats
+[14]: #between
 
-[15]: #between
+[15]: #getvideoid
 
-[16]: #getvideoid
+[16]: #validateurl
 
-[17]: #validateurl
+[17]: #parseformats
 
-[18]: #parseformats
+[18]: #addformatmeta
 
-[19]: #addformatmeta
+[19]: #striphtml
 
-[20]: #striphtml
+[20]: #parallel
 
-[21]: #parallel
+[21]: #indexof
 
-[22]: #indexof
+[22]: #validquerydomains
 
-[23]: #validquerydomains
+[23]: #idregex
 
-[24]: #idregex
+[24]: #formats
 
-[25]: #formats
+[25]: #gettokens
 
-[26]: #gettokens
+[26]: #decipher
 
-[27]: #decipher
+[27]: #extractactions
 
-[28]: #extractactions
+[28]: #setdownloadurl
 
-[29]: #setdownloadurl
+[29]: #decipherformats
 
-[30]: #decipherformats
+[30]: #swapheadandposition
 
-[31]: #swapheadandposition
+[31]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[32]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[32]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
-[33]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[33]: https://nodejs.org/api/stream.html#stream_class_stream_readable
 
-[34]: https://nodejs.org/api/stream.html#stream_class_stream_readable
+[34]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 
-[35]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[35]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
 
-[36]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+[36]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error
 
-[37]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error
+[37]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
 
-[38]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+[38]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp
 
-[39]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp
+[39]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
-[40]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[40]: https://www.youtube.com/watch?v=VIDEO_ID
 
-[41]: https://www.youtube.com/watch?v=VIDEO_ID
+[41]: https://m.youtube.com/watch?v=VIDEO_ID
 
-[42]: https://m.youtube.com/watch?v=VIDEO_ID
+[42]: https://youtu.be/VIDEO_ID
 
-[43]: https://youtu.be/VIDEO_ID
+[43]: https://www.youtube.com/v/VIDEO_ID
 
-[44]: https://www.youtube.com/v/VIDEO_ID
+[44]: https://www.youtube.com/embed/VIDEO_ID
 
-[45]: https://www.youtube.com/embed/VIDEO_ID
+[45]: https://music.youtube.com/watch?v=VIDEO_ID
 
-[46]: https://music.youtube.com/watch?v=VIDEO_ID
+[46]: https://gaming.youtube.com/watch?v=VIDEO_ID
 
-[47]: https://gaming.youtube.com/watch?v=VIDEO_ID
-
-[48]: http://en.wikipedia.org/wiki/YouTube#Quality_and_formats
+[47]: http://en.wikipedia.org/wiki/YouTube#Quality_and_formats
