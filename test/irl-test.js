@@ -16,7 +16,8 @@ let videos = {
 };
 
 
-describe('Try downloading videos without mocking', () => {
+describe('Try downloading videos without mocking', function() {
+  this.retries(1);
   beforeEach(() => {
     nock.cleanAll();
     nock.enableNetConnect();
@@ -30,8 +31,8 @@ describe('Try downloading videos without mocking', () => {
       it('Request status code is not 403 Forbidden', (done) => {
         const stream = ytdl(video, { debug: false });
         stream.once('response', (res) => {
+          stream.destroy();
           assert.notEqual(res.statusCode, 403);
-          res.destroy();
           done();
         });
       });
