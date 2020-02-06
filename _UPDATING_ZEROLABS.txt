@@ -1,0 +1,22 @@
+What I do is:
+* Clone the latest library
+* Use filemerge to compare them
+* Merge together the files:
+    index.js - basically we only really need to maintain our exports to miniget replacer and the getfullinfo fn
+    info.js
+    sig.js
+    util.js
+    formats.js - When formats change you also need to check the format picker is choosing the right format itags.
+* Only merge in what we need
+
+Last update: 6 Feb 2020 - NOTE in the end we didn't publish this version, but it did work.
+
+WRITE WHAT YOU DID BELOW:
+
+UPDATE LOG
+
+index.js - Not merged, no significant changes
+info.js - Updates to our two major functions. Cache ignored cos we don't use it.
+sig.js - copied over except I kept our query[format.sp || "signature"] = sig;
+util.js - Pasted new one in
+formats.js  - Pasted new one in
