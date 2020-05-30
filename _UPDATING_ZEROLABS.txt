@@ -22,3 +22,7 @@ info.js - Updates to our two major functions. Cache ignored cos we don't use it.
 sig.js - copied over except I kept our query[format.sp || "signature"] = sig;
 util.js - Pasted new one in
 formats.js  - Pasted new one in
+
+UPDATE LOG 30 MAY 2020
+
+Almost all of our key files were copied in. Miniget changed from callback to promises.
