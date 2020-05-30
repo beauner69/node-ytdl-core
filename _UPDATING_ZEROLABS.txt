@@ -1,5 +1,7 @@
 What I do is:
-* Clone the latest library
+* Clone the latest library into new spot
+  cd /tmp
+  git clone git@github.com:fent/node-ytdl-core.git
 * Use filemerge to compare them
 * Merge together the files:
     index.js - basically we only really need to maintain our exports to miniget replacer and the getfullinfo fn
@@ -13,7 +15,7 @@ Last update: 6 Feb 2020 - NOTE in the end we didn't publish this version, but it
 
 WRITE WHAT YOU DID BELOW:
 
-UPDATE LOG
+UPDATE LOG 6 FEB 2020
 
 index.js - Not merged, no significant changes
 info.js - Updates to our two major functions. Cache ignored cos we don't use it.

@@ -7,37 +7,39 @@
     -   [InstallMiniGet][3]
 -   [getBasicInfo][4]
 -   [getFullInfo][5]
--   [validateID][6]
--   [validateID][7]
--   [validateID][8]
--   [parseFormats][9]
--   [gotConfig][10]
--   [sortFormats][11]
--   [chooseFormat][12]
--   [filterFormats][13]
--   [between][14]
--   [getVideoID][15]
--   [validateURL][16]
--   [addFormatMeta][17]
--   [stripHTML][18]
--   [parallel][19]
--   [indexOf][20]
--   [validQueryDomains][21]
--   [idRegex][22]
--   [formats][23]
--   [getTokens][24]
--   [decipher][25]
--   [extractActions][26]
--   [setDownloadURL][27]
--   [decipherFormats][28]
--   [swapHeadAndPosition][29]
+-   [parseFormats][6]
+-   [gotConfig][7]
+-   [getDashManifest][8]
+-   [getM3U8][9]
+-   [sortFormats][10]
+-   [chooseFormat][11]
+-   [filterFormats][12]
+-   [between][13]
+-   [getVideoID][14]
+-   [validateURL][15]
+-   [addFormatMeta][16]
+-   [stripHTML][17]
+-   [parseAbbreviatedNumber][18]
+-   [cutAfterJSON][19]
+-   [playError][20]
+-   [getFormatByQuality][21]
+-   [sortFormatsSimple][22]
+-   [validQueryDomains][23]
+-   [idRegex][24]
+-   [formats][25]
+-   [getTokens][26]
+-   [decipher][27]
+-   [extractActions][28]
+-   [setDownloadURL][29]
+-   [decipherFormats][30]
+-   [swapHeadAndPosition][31]
 
 ## ytdl
 
 **Parameters**
 
--   `link` **[string][30]** 
--   `options` **![Object][31]** 
+-   `link` **[string][32]** 
+-   `options` **![Object][33]** 
 
 Returns **ReadableStream** 
 
@@ -48,9 +50,10 @@ Chooses a format to download.
 **Parameters**
 
 -   `miniget`  
--   `stream` **[stream.Readable][32]** 
--   `info` **[Object][31]** 
--   `options` **[Object][31]** 
+-   `minipromise`  
+-   `stream` **[stream.Readable][34]** 
+-   `info` **[Object][33]** 
+-   `options` **[Object][33]** 
 
 ### InstallMiniGet
 
@@ -61,8 +64,11 @@ Can be used to download video after its `info` is gotten through
 **Parameters**
 
 -   `miniget`  
--   `info` **[Object][31]** 
--   `options` **![Object][31]** 
+-   `minipromise`  
+-   `info` **[Object][33]** 
+-   `options` **![Object][33]** 
+
+Returns **ReadableStream** 
 
 ## getBasicInfo
 
@@ -70,9 +76,10 @@ Gets info from a video without getting additional formats.
 
 **Parameters**
 
--   `id` **[string][30]** 
--   `options` **[Object][31]**  (optional, default `{}`)
--   `callback`  
+-   `id` **[string][32]** 
+-   `options` **[Object][33]** 
+
+Returns **[Promise][35]&lt;[Object][33]>** 
 
 ## getFullInfo
 
@@ -80,55 +87,51 @@ Gets info from a video additional formats and deciphered URLs.
 
 **Parameters**
 
--   `id` **[string][30]** 
--   `options` **[Object][31]** 
--   `callback`  
+-   `id` **[string][32]** 
+-   `options` **[Object][33]** 
 
-## validateID
-
-Merges formats from DASH or M3U8 with formats from video info page.
-
-**Parameters**
-
--   `info` **[Object][31]** 
--   `formatsMap` **[Object][31]** 
-
-## validateID
-
-Gets additional DASH formats.
-
-**Parameters**
-
--   `url` **[string][30]** 
--   `options` **[Object][31]** 
-
-## validateID
-
-Gets additional formats.
-
-**Parameters**
-
--   `url` **[string][30]** 
--   `options` **[Object][31]** 
+Returns **[Promise][35]&lt;[Object][33]>** 
 
 ## parseFormats
 
 **Parameters**
 
--   `info` **[Object][31]** 
+-   `info` **[Object][33]** 
 
-Returns **[Array][33]&lt;[Object][31]>** 
+Returns **[Array][36]&lt;[Object][33]>** 
 
 ## gotConfig
 
 **Parameters**
 
--   `id` **[Object][31]** 
--   `options` **[Object][31]** 
--   `additional` **[Object][31]** 
--   `config` **[Object][31]** 
--   `fromEmbed` **[boolean][34]** 
--   `callback`  
+-   `id` **[Object][33]** 
+-   `options` **[Object][33]** 
+-   `info` **[Object][33]** 
+-   `body` **[string][32]** 
+
+Returns **[Promise][35]&lt;[Object][33]>** 
+
+## getDashManifest
+
+Gets additional DASH formats.
+
+**Parameters**
+
+-   `url` **[string][32]** 
+-   `options` **[Object][33]** 
+
+Returns **[Promise][35]&lt;[Array][36]&lt;[Object][33]>>** 
+
+## getM3U8
+
+Gets additional formats.
+
+**Parameters**
+
+-   `url` **[string][32]** 
+-   `options` **[Object][33]** 
+
+Returns **[Promise][35]&lt;[Array][36]&lt;[Object][33]>>** 
 
 ## sortFormats
 
@@ -137,8 +140,10 @@ By resolution, then video bitrate, then audio bitrate.
 
 **Parameters**
 
--   `a` **[Object][31]** 
--   `b` **[Object][31]** 
+-   `a` **[Object][33]** 
+-   `b` **[Object][33]** 
+
+Returns **[number][37]** 
 
 ## chooseFormat
 
@@ -146,19 +151,22 @@ Choose a format depending on the given options.
 
 **Parameters**
 
--   `formats` **[Array][33]&lt;[Object][31]>** 
--   `options` **[Object][31]** 
+-   `formats` **[Array][36]&lt;[Object][33]>** 
+-   `options` **[Object][33]** 
 
-Returns **([Object][31] \| [Error][35])** 
+
+-   Throws **[Error][38]** when no format matches the filter/format rules
+
+Returns **[Object][33]** 
 
 ## filterFormats
 
 **Parameters**
 
--   `formats` **[Array][33]&lt;[Object][31]>** 
--   `filter` **[Function][36]** 
+-   `formats` **[Array][36]&lt;[Object][33]>** 
+-   `filter` **[Function][39]** 
 
-Returns **[Array][33]&lt;[Object][31]>** 
+Returns **[Array][36]&lt;[Object][33]>** 
 
 ## between
 
@@ -166,11 +174,11 @@ Extract string inbetween another.
 
 **Parameters**
 
--   `haystack` **[string][30]** 
--   `left` **[string][30]** 
--   `right` **[string][30]** 
+-   `haystack` **[string][32]** 
+-   `left` **[string][32]** 
+-   `right` **[string][32]** 
 
-Returns **[string][30]** 
+Returns **[string][32]** 
 
 ## getVideoID
 
@@ -179,9 +187,13 @@ matches the video ID format.
 
 **Parameters**
 
--   `str` **[string][30]** 
+-   `str` **[string][32]** 
 
-Returns **([string][30] \| [Error][35])** 
+
+-   Throws **[Error][38]** If unable to find a id
+-   Throws **[TypeError][40]** If videoid doesn't match specs
+
+Returns **[string][32]** 
 
 ## validateURL
 
@@ -189,15 +201,17 @@ Checks wether the input string includes a valid id.
 
 **Parameters**
 
--   `string` **[string][30]** 
+-   `string` **[string][32]** 
 
-Returns **[boolean][34]** 
+Returns **[boolean][41]** 
 
 ## addFormatMeta
 
 **Parameters**
 
--   `format` **[Object][31]** 
+-   `format` **[Object][33]** 
+
+Returns **[Object][33]** 
 
 ## stripHTML
 
@@ -205,27 +219,62 @@ Get only the string from an HTML string.
 
 **Parameters**
 
--   `html` **[string][30]** 
+-   `html` **[string][32]** 
 
-Returns **[string][30]** 
+Returns **[string][32]** 
 
-## parallel
+## parseAbbreviatedNumber
 
-**Parameters**
-
--   `funcs` **[Array][33]&lt;[Function][36]>** 
--   `callback`  
-
-## indexOf
-
-String#indexOf() that supports regex too.
+Get a number from an abbreviated number string.
 
 **Parameters**
 
--   `haystack` **[string][30]** 
--   `needle` **([string][30] \| [RegExp][37])** 
+-   `string` **[string][32]** 
 
-Returns **[number][38]** 
+Returns **[number][37]** 
+
+## cutAfterJSON
+
+Match begin and end braces of input JSON, return only json
+
+**Parameters**
+
+-   `mixedJson` **[string][32]** 
+
+Returns **[string][32]** 
+
+## playError
+
+Checks if there is a playability error.
+
+**Parameters**
+
+-   `info` **[Object][33]** 
+-   `status` **[string][32]** 
+
+Returns **![Error][38]** 
+
+## getFormatByQuality
+
+Gets a format based on quality or array of quality's
+
+**Parameters**
+
+-   `quality` **([string][32] | \[[string][32]])** 
+-   `formats` **\[[Object][33]]** 
+
+Returns **[Object][33]** 
+
+## sortFormatsSimple
+
+Sort's the provided formats - highest bitrate first
+
+**Parameters**
+
+-   `formats` **\[[Object][33]]** 
+-   `audioOnly` **[boolean][41]** look at audio score instead of video bitrate (optional, default `false`)
+
+Returns **\[[Object][33]]** 
 
 ## validQueryDomains
 
@@ -233,19 +282,23 @@ Get video ID.
 
 There are a few type of video URL formats.
 
--   [https://www.youtube.com/watch?v=VIDEO_ID][39]
--   [https://m.youtube.com/watch?v=VIDEO_ID][40]
--   [https://youtu.be/VIDEO_ID][41]
--   [https://www.youtube.com/v/VIDEO_ID][42]
--   [https://www.youtube.com/embed/VIDEO_ID][43]
--   [https://music.youtube.com/watch?v=VIDEO_ID][44]
--   [https://gaming.youtube.com/watch?v=VIDEO_ID][45]
+-   [https://www.youtube.com/watch?v=VIDEO_ID][42]
+-   [https://m.youtube.com/watch?v=VIDEO_ID][43]
+-   [https://youtu.be/VIDEO_ID][44]
+-   [https://www.youtube.com/v/VIDEO_ID][45]
+-   [https://www.youtube.com/embed/VIDEO_ID][46]
+-   [https://music.youtube.com/watch?v=VIDEO_ID][47]
+-   [https://gaming.youtube.com/watch?v=VIDEO_ID][48]
 
 **Parameters**
 
--   `link` **[string][30]** 
+-   `link` **[string][32]** 
 
-Returns **([string][30] \| [Error][35])** 
+
+-   Throws **[Error][38]** If unable to find a id
+-   Throws **[TypeError][40]** If videoid doesn't match specs
+
+Returns **[string][32]** 
 
 ## idRegex
 
@@ -253,13 +306,13 @@ Returns true if given id satifies YouTube's id format.
 
 **Parameters**
 
--   `id` **[string][30]** 
+-   `id` **[string][32]** 
 
-Returns **[boolean][34]** 
+Returns **[boolean][41]** 
 
 ## formats
 
-[http://en.wikipedia.org/wiki/YouTube#Quality_and_formats][46]
+[http://en.wikipedia.org/wiki/YouTube#Quality_and_formats][49]
 
 ## getTokens
 
@@ -267,9 +320,10 @@ Extract signature deciphering tokens from html5player file.
 
 **Parameters**
 
--   `html5playerfile` **[string][30]** 
--   `options` **[Object][31]** 
--   `callback`  
+-   `html5playerfile` **[string][32]** 
+-   `options` **[Object][33]** 
+
+Returns **[Promise][35]&lt;[Array][36]&lt;[string][32]>>** 
 
 ## decipher
 
@@ -277,10 +331,10 @@ Decipher a signature based on action tokens.
 
 **Parameters**
 
--   `tokens` **[Array][33]&lt;[string][30]>** 
--   `sig` **[string][30]** 
+-   `tokens` **[Array][36]&lt;[string][32]>** 
+-   `sig` **[string][32]** 
 
-Returns **[string][30]** 
+Returns **[string][32]** 
 
 ## extractActions
 
@@ -302,17 +356,17 @@ it takes on a signature.
 
 **Parameters**
 
--   `body` **[string][30]** 
+-   `body` **[string][32]** 
 
-Returns **[Array][33]&lt;[string][30]>** 
+Returns **[Array][36]&lt;[string][32]>** 
 
 ## setDownloadURL
 
 **Parameters**
 
--   `format` **[Object][31]** 
--   `sig` **[string][30]** 
--   `debug` **[boolean][34]** 
+-   `format` **[Object][33]** 
+-   `sig` **[string][32]** 
+-   `debug` **[boolean][41]** 
 
 ## decipherFormats
 
@@ -320,9 +374,9 @@ Applies `sig.decipher()` to all format URL's.
 
 **Parameters**
 
--   `formats` **[Array][33]&lt;[Object][31]>** 
--   `tokens` **[Array][33]&lt;[string][30]>** 
--   `debug` **[boolean][34]** 
+-   `formats` **[Array][36]&lt;[Object][33]>** 
+-   `html5player` **[string][32]** 
+-   `options` **[Object][33]** 
 
 ## swapHeadAndPosition
 
@@ -330,10 +384,10 @@ Swaps the first element of an array with one of given position.
 
 **Parameters**
 
--   `arr` **[Array][33]&lt;[Object][31]>** 
--   `position` **[number][38]** 
+-   `arr` **[Array][36]&lt;[Object][33]>** 
+-   `position` **[number][37]** 
 
-Returns **[Array][33]&lt;[Object][31]>** 
+Returns **[Array][36]&lt;[Object][33]>** 
 
 [1]: #ytdl
 
@@ -345,84 +399,90 @@ Returns **[Array][33]&lt;[Object][31]>**
 
 [5]: #getfullinfo
 
-[6]: #validateid
+[6]: #parseformats
 
-[7]: #validateid-1
+[7]: #gotconfig
 
-[8]: #validateid-2
+[8]: #getdashmanifest
 
-[9]: #parseformats
+[9]: #getm3u8
 
-[10]: #gotconfig
+[10]: #sortformats
 
-[11]: #sortformats
+[11]: #chooseformat
 
-[12]: #chooseformat
+[12]: #filterformats
 
-[13]: #filterformats
+[13]: #between
 
-[14]: #between
+[14]: #getvideoid
 
-[15]: #getvideoid
+[15]: #validateurl
 
-[16]: #validateurl
+[16]: #addformatmeta
 
-[17]: #addformatmeta
+[17]: #striphtml
 
-[18]: #striphtml
+[18]: #parseabbreviatednumber
 
-[19]: #parallel
+[19]: #cutafterjson
 
-[20]: #indexof
+[20]: #playerror
 
-[21]: #validquerydomains
+[21]: #getformatbyquality
 
-[22]: #idregex
+[22]: #sortformatssimple
 
-[23]: #formats
+[23]: #validquerydomains
 
-[24]: #gettokens
+[24]: #idregex
 
-[25]: #decipher
+[25]: #formats
 
-[26]: #extractactions
+[26]: #gettokens
 
-[27]: #setdownloadurl
+[27]: #decipher
 
-[28]: #decipherformats
+[28]: #extractactions
 
-[29]: #swapheadandposition
+[29]: #setdownloadurl
 
-[30]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[30]: #decipherformats
 
-[31]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[31]: #swapheadandposition
 
-[32]: https://nodejs.org/api/stream.html#stream_class_stream_readable
+[32]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[33]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[33]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
-[34]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+[34]: https://nodejs.org/api/stream.html#stream_class_stream_readable
 
-[35]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error
+[35]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
 
-[36]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+[36]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 
-[37]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp
+[37]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
-[38]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[38]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error
 
-[39]: https://www.youtube.com/watch?v=VIDEO_ID
+[39]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
 
-[40]: https://m.youtube.com/watch?v=VIDEO_ID
+[40]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/TypeError
 
-[41]: https://youtu.be/VIDEO_ID
+[41]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
 
-[42]: https://www.youtube.com/v/VIDEO_ID
+[42]: https://www.youtube.com/watch?v=VIDEO_ID
 
-[43]: https://www.youtube.com/embed/VIDEO_ID
+[43]: https://m.youtube.com/watch?v=VIDEO_ID
 
-[44]: https://music.youtube.com/watch?v=VIDEO_ID
+[44]: https://youtu.be/VIDEO_ID
 
-[45]: https://gaming.youtube.com/watch?v=VIDEO_ID
+[45]: https://www.youtube.com/v/VIDEO_ID
 
-[46]: http://en.wikipedia.org/wiki/YouTube#Quality_and_formats
+[46]: https://www.youtube.com/embed/VIDEO_ID
+
+[47]: https://music.youtube.com/watch?v=VIDEO_ID
+
+[48]: https://gaming.youtube.com/watch?v=VIDEO_ID
+
+[49]: http://en.wikipedia.org/wiki/YouTube#Quality_and_formats
