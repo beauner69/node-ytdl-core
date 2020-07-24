@@ -5,20 +5,20 @@ declare module "@zerolabs/ytdl-core" {
   namespace ytdl {
     type downloadOptions = {
       quality?:
-        | "lowest"
-        | "highest"
-        | "highestaudio"
-        | "lowestaudio"
-        | "highestvideo"
-        | "lowestvideo"
-        | string
-        | number;
+      | "lowest"
+      | "highest"
+      | "highestaudio"
+      | "lowestaudio"
+      | "highestvideo"
+      | "lowestvideo"
+      | string
+      | number;
       filter?:
-        | "video"
-        | "videoonly"
-        | "audio"
-        | "audioonly"
-        | ((format: videoFormat) => boolean);
+      | "video"
+      | "videoonly"
+      | "audio"
+      | "audioonly"
+      | ((format: videoFormat) => boolean);
       format?: videoFormat;
       range?: {
         start?: number;
@@ -45,30 +45,30 @@ declare module "@zerolabs/ytdl-core" {
       type?: string;
       quality?: "hd720" | "medium" | "small" | string;
       quality_label?:
-        | "144p"
-        | "240p"
-        | "270p"
-        | "360p"
-        | "480p"
-        | "720p"
-        | "1080p"
-        | "1440p"
-        | "2160p"
-        | "4320p";
+      | "144p"
+      | "240p"
+      | "270p"
+      | "360p"
+      | "480p"
+      | "720p"
+      | "1080p"
+      | "1440p"
+      | "2160p"
+      | "4320p";
       url: string;
       itag: string;
       container: "flv" | "3gp" | "mp4" | "webm" | "ts" | "m4a";
       resolution:
-        | "144p"
-        | "240p"
-        | "270p"
-        | "360p"
-        | "480p"
-        | "720p"
-        | "1080p"
-        | "1440p"
-        | "2160p"
-        | "4320p";
+      | "144p"
+      | "240p"
+      | "270p"
+      | "360p"
+      | "480p"
+      | "720p"
+      | "1080p"
+      | "1440p"
+      | "2160p"
+      | "4320p";
       encoding: "Sorenson H.283" | "MPEG-4 Visual" | "VP8" | "VP9" | "H.264";
       profile: "3d" | "high" | "main" | "simple" | "baseline" | "Main@L3.1";
       bitrate: string;
@@ -319,7 +319,8 @@ declare module "@zerolabs/ytdl-core" {
         url: string,
         opts: any,
         callback: (a: number, b: number, text: string) => void
-      ) => void
+      ) => void,
+      minigetpromise: any
     ): void;
   }
 
