@@ -26,3 +26,7 @@ formats.js  - Pasted new one in
 UPDATE LOG 30 MAY 2020
 
 Almost all of our key files were copied in. Miniget changed from callback to promises.
+
+UPDATE LOG ~7 OCT 2020
+
+Started trying to make it easier to merge by using /* */ instead of // to block out whole sections. Did a merge.
