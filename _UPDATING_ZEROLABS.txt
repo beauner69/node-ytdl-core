@@ -30,3 +30,7 @@ Almost all of our key files were copied in. Miniget changed from callback to pro
 UPDATE LOG ~7 OCT 2020
 
 Started trying to make it easier to merge by using /* */ instead of // to block out whole sections. Did a merge.
+
+UPDATE LOG ~23 OCT 2020
+
+Emergency situation. Fortunately our changes to make merging quicker sped up this merge. Modified miniget to match their new expectations to reduce code changes. Still need code changes in multiple places but it's not as bad. Tried to tag them all zerolabs but of course there are tons. Anyway got the shit done.

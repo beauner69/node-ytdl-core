@@ -95,7 +95,7 @@ Returns **[Promise][36]&lt;[Object][34]>**
 
 ## validateID
 
-Gets additional DASH formats.
+Gets additional formats.
 
 **Parameters**
 
@@ -106,7 +106,7 @@ Returns **[Promise][36]&lt;[Array][37]&lt;[Object][34]>>**
 
 ## validateID
 
-Gets additional formats.
+Gets additional DASH formats.
 
 **Parameters**
 
