@@ -7,10 +7,10 @@
     -   [InstallMiniGet][3]
 -   [getBasicInfo][4]
 -   [getInfo][5]
--   [validateID][6]
--   [validateID][7]
--   [parseFormats][8]
--   [gotConfig][9]
+-   [parseFormats][6]
+-   [gotConfig][7]
+-   [getM3U8][8]
+-   [getM3U8][9]
 -   [sortFormats][10]
 -   [chooseFormat][11]
 -   [filterFormats][12]
@@ -93,28 +93,6 @@ Gets info from a video additional formats and deciphered URLs.
 
 Returns **[Promise][36]&lt;[Object][34]>** 
 
-## validateID
-
-Gets additional formats.
-
-**Parameters**
-
--   `url` **[string][33]** 
--   `options` **[Object][34]** 
-
-Returns **[Promise][36]&lt;[Array][37]&lt;[Object][34]>>** 
-
-## validateID
-
-Gets additional DASH formats.
-
-**Parameters**
-
--   `url` **[string][33]** 
--   `options` **[Object][34]** 
-
-Returns **[Promise][36]&lt;[Array][37]&lt;[Object][34]>>** 
-
 ## parseFormats
 
 **Parameters**
@@ -133,6 +111,28 @@ Returns **[Array][37]&lt;[Object][34]>**
 -   `body` **[string][33]** 
 
 Returns **[Promise][36]&lt;[Object][34]>** 
+
+## getM3U8
+
+Gets additional DASH formats.
+
+**Parameters**
+
+-   `url` **[string][33]** 
+-   `options` **[Object][34]** 
+
+Returns **[Promise][36]&lt;[Array][37]&lt;[Object][34]>>** 
+
+## getM3U8
+
+Gets additional formats.
+
+**Parameters**
+
+-   `url` **[string][33]** 
+-   `options` **[Object][34]** 
+
+Returns **[Promise][36]&lt;[Array][37]&lt;[Object][34]>>** 
 
 ## sortFormats
 
@@ -411,13 +411,13 @@ Returns **[Array][37]&lt;[Object][34]>**
 
 [5]: #getinfo
 
-[6]: #validateid
+[6]: #parseformats
 
-[7]: #validateid-1
+[7]: #gotconfig
 
-[8]: #parseformats
+[8]: #getm3u8
 
-[9]: #gotconfig
+[9]: #getm3u8-1
 
 [10]: #sortformats
 
