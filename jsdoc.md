@@ -10,14 +10,14 @@
 -   [pipeline][6]
 -   [assign][7]
 -   [retryFunc][8]
--   [EMBED_URL][9]
--   [parseFormats][10]
+-   [parseFormats][9]
+-   [getM3U8][10]
 -   [getM3U8][11]
--   [getM3U8][12]
--   [between][13]
--   [parseAbbreviatedNumber][14]
--   [cutAfterJSON][15]
--   [playError][16]
+-   [between][12]
+-   [parseAbbreviatedNumber][13]
+-   [cutAfterJSON][14]
+-   [playError][15]
+-   [exposedMiniget][16]
 -   [deprecate][17]
 -   [sortFormatsBy][18]
 -   [sortFormats][19]
@@ -27,9 +27,9 @@
 -   [getFormatByQuality][23]
 -   [formats][24]
 -   [validQueryDomains][25]
--   [getVideoID][26]
--   [validateURL][27]
--   [idRegex][28]
+-   [urlRegex][26]
+-   [idRegex][27]
+-   [validateURL][28]
 -   [getTokens][29]
 -   [decipher][30]
 -   [extractActions][31]
@@ -136,20 +136,6 @@ too many redirects, invalid URL, status code 404, status code 502.
     -   `options.backoff` **[Object][36]** 
         -   `options.backoff.inc` **[number][41]** 
 
-## EMBED_URL
-
-If the video page doesn't work, maybe because it has mature content.
-and requires an account logged in to view, try the embed page.
-
-Type: [string][35]
-
-**Parameters**
-
--   `id` **[string][35]** 
--   `options` **[Object][36]** 
-
-Returns **[string][35]** 
-
 ## parseFormats
 
 **Parameters**
@@ -223,6 +209,18 @@ Checks if there is a playability error.
 -   `ErrorType` **[Error][42]**  (optional, default `Error`)
 
 Returns **![Error][42]** 
+
+## exposedMiniget
+
+Does a miniget request and calls options.requestCallback if present
+
+**Parameters**
+
+-   `url` **[string][35]** the request url
+-   `options` **[Object][36]** an object with optional requestOptions and requestCallback parameters (optional, default `{}`)
+-   `requestOptionsOverwrite` **[Object][36]** overwrite of options.requestOptions
+
+Returns **miniget.Stream** 
 
 ## deprecate
 
@@ -329,7 +327,7 @@ There are a few type of video URL formats.
 
 Returns **[string][35]** 
 
-## getVideoID
+## urlRegex
 
 Gets video ID either from a url or by checking if the given string
 matches the video ID format.
@@ -344,16 +342,6 @@ matches the video ID format.
 
 Returns **[string][35]** 
 
-## validateURL
-
-Checks wether the input string includes a valid id.
-
-**Parameters**
-
--   `string` **[string][35]** 
-
-Returns **[boolean][52]** 
-
 ## idRegex
 
 Returns true if given id satifies YouTube's id format.
@@ -361,6 +349,16 @@ Returns true if given id satifies YouTube's id format.
 **Parameters**
 
 -   `id` **[string][35]** 
+
+Returns **[boolean][52]** 
+
+## validateURL
+
+Checks wether the input string includes a valid id.
+
+**Parameters**
+
+-   `string` **[string][35]** 
 
 Returns **[boolean][52]** 
 
@@ -454,21 +452,21 @@ Returns **[Array][39]&lt;[Object][36]>**
 
 [8]: #retryfunc
 
-[9]: #embed_url
+[9]: #parseformats
 
-[10]: #parseformats
+[10]: #getm3u8
 
-[11]: #getm3u8
+[11]: #getm3u8-1
 
-[12]: #getm3u8-1
+[12]: #between
 
-[13]: #between
+[13]: #parseabbreviatednumber
 
-[14]: #parseabbreviatednumber
+[14]: #cutafterjson
 
-[15]: #cutafterjson
+[15]: #playerror
 
-[16]: #playerror
+[16]: #exposedminiget
 
 [17]: #deprecate
 
@@ -488,11 +486,11 @@ Returns **[Array][39]&lt;[Object][36]>**
 
 [25]: #validquerydomains
 
-[26]: #getvideoid
+[26]: #urlregex
 
-[27]: #validateurl
+[27]: #idregex
 
-[28]: #idregex
+[28]: #validateurl
 
 [29]: #gettokens
 

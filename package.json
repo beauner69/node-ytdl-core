@@ -6,7 +6,7 @@
     "video",
     "download"
   ],
-  "version": "0.0.15",
+  "version": "0.0.16",
   "author": "fent (https://github.com/fent)",
   "contributors": [
     "Tobias Kutscha (https://github.com/TimeForANinja)",
@@ -24,7 +24,9 @@
   "scripts": {
     "test": "istanbul cover node_modules/mocha/bin/_mocha -- -t 16000 test/*-test.js"
   },
-  "dependencies": {},
+  "dependencies": {
+    "whatwg-url": "^7.1.0"
+  },
   "devDependencies": {
     "@types/node": "latest",
     "assert-diff": "^2.0.0",
