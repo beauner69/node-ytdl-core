@@ -6,7 +6,7 @@
     "video",
     "download"
   ],
-  "version": "0.0.16",
+  "version": "0.0.17",
   "author": "fent (https://github.com/fent)",
   "contributors": [
     "Tobias Kutscha (https://github.com/TimeForANinja)",
@@ -35,7 +35,17 @@
     "muk-prop": "^2.0.0",
     "nock": "^11.1.0",
     "sinon": "^7.3.2",
-    "stream-equal": "~1.1.0"
+    "stream-equal": "~1.1.0",
+    "prettier": "^2.3.1",
+    "ts-node": "9.1.1",
+    "fs-extra": "9.1.0",
+    "@zerolabs/deepend": "latest",
+    "@zerolabs/deepend-node": "latest",
+    "@zerolabs/uffizi": "latest",
+    "commander": "7.2.0",
+    "figlet": "*",
+    "center-align": "*",
+    "@types/fs-extra": "latest"
   },
   "engines": {
     "node": ">=6"
